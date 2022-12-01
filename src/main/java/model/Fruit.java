@@ -1,5 +1,7 @@
 package model;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 
 /**
@@ -9,6 +11,7 @@ public class Fruit {
 
     public String name;
     public String scientificName;
+    public float weight;
     private float averageWeight;
     public ArrayList<String> colors;
     public ArrayList<String> vitamins;
@@ -32,9 +35,10 @@ public class Fruit {
         this.taste = Taste.NEUTRAL;
     }
 
-    public Fruit(String name, String scientificName, float averageWeight, ArrayList<String> colors, ArrayList<String> vitamins, Float pricePound, int calories, boolean edible, boolean poisonous, Maturity maturity, Taste taste) {
+    public Fruit(String name, String scientificName, float weight, float averageWeight, ArrayList<String> colors, ArrayList<String> vitamins, Float pricePound, int calories, boolean edible, boolean poisonous, Maturity maturity, Taste taste) {
         this.name = name;
         this.scientificName = scientificName;
+        this.weight = weight;
         this.averageWeight = averageWeight;
         this.colors = colors;
         this.vitamins = vitamins;
@@ -46,7 +50,7 @@ public class Fruit {
         this.taste = taste;
     }
 
-//    Getters and Setters
+    //    Getters and Setters
 
     public String getName() {
         return name;
@@ -62,6 +66,14 @@ public class Fruit {
 
     public void setScientificName(String scientificName) {
         this.scientificName = scientificName;
+    }
+
+    public float getWeight() {
+        return weight;
+    }
+
+    public void setWeight(float weight) {
+        this.weight = weight;
     }
 
     public float getAverageWeight() {
@@ -258,6 +270,7 @@ public class Fruit {
         return " --- Detailed description --- \n" +
                 "Fruit name: " + name + "\n" +
                 "Scientific name: " + scientificName + "\n" +
+                "Weight: " + weight + "\n" +
                 "Average Weight: " + averageWeight + " grams\n" +
                 listOfColors() +
                 listOfVitamins() + "\n" +
@@ -272,17 +285,34 @@ public class Fruit {
 
     /**
      * Text with basic information about the fruit
-     *  - name, average weight, calories and price per pound
+     * - name, average weight, calories and price per pound
      *
      * @return String
      */
     public String description() {
         return "- Detailed description - \n" +
                 "Name: " + name + "\n" +
-                "Average Weight: " + averageWeight + " grams \n" +
+                "Weight: " + weight + " grams \n" +
                 "Calories: " + calories + "\n" +
                 "Price per pound: $" + pricePound + "\n";
     }
+
+    /**
+     * Know the price with the cost of the pound by the weight in grams of the fruit
+     *
+     * @return the price
+     */
+    public double getPrice() {
+        //large number
+        double poundsToRound = weight / 453.59;
+
+        //It is rounded
+        BigDecimal pounds = new BigDecimal(poundsToRound).setScale(2, RoundingMode.HALF_DOWN);
+
+        //Multiply de price per pound to total pounds and is returned
+        return pricePound * pounds.doubleValue();
+    }
+
 
 }
 
