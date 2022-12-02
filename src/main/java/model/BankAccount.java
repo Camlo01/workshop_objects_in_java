@@ -7,6 +7,11 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * Class that represents a bank account with useful methods.
+ *
+ * @author Camilo Beltrán
+ */
 public class BankAccount {
 
     private int accountNumber;
@@ -24,9 +29,31 @@ public class BankAccount {
 
 //    Constructors
 
+    /**
+     * Empty constructor.
+     */
     public BankAccount() {
+        this.type = AccountType.CURRENT;
     }
 
+    /**
+     * Constructor with minimum necessary information.
+     */
+    public BankAccount(int accountNumber, boolean activated, double balance, int password, boolean taxFree, Person owner, double monthlyFee, Date lastFeeDiscount, AccountType type) {
+        this.accountNumber = accountNumber;
+        this.activated = activated;
+        this.balance = balance;
+        this.password = password;
+        this.taxFree = taxFree;
+        this.owner = owner;
+        this.monthlyFee = monthlyFee;
+        this.lastFeeDiscount = lastFeeDiscount;
+        this.type = type;
+    }
+
+    /**
+     * constructor with all properties.
+     */
     public BankAccount(int accountNumber, boolean activated, double balance, Integer cardNumber, int password, boolean taxFree, Person owner, double monthlyFee, Date lastFeeDiscount, AccountType type) {
         this.accountNumber = accountNumber;
         this.activated = activated;
@@ -60,10 +87,6 @@ public class BankAccount {
 
     public double getBalance() {
         return balance;
-    }
-
-    public void setBalance(double balance) {
-        this.balance = balance;
     }
 
     public Integer getCardNumber() {
@@ -223,7 +246,7 @@ public class BankAccount {
     }
 
     /**
-     * Know information about the months of fee pending payable
+     * Provides information on how many months of fees are pending to be paid
      *
      * @return months due and the total price
      */
