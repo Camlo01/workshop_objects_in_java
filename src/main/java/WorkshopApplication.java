@@ -1,5 +1,6 @@
 import model.BankAccount;
 import model.Fruit;
+import model.Invoice;
 import model.Person;
 
 import java.time.LocalDate;

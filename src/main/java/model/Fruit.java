@@ -5,6 +5,8 @@ import java.math.RoundingMode;
 import java.util.ArrayList;
 
 /**
+ * Class that represents the product fruit along with useful methods.
+ *
  * @author Camilo Beltrán
  */
 public class Fruit {
@@ -28,6 +30,9 @@ public class Fruit {
 
 //    Constructors
 
+    /**
+     * Empty constructor.
+     */
     public Fruit() {
         this.colors = new ArrayList<String>();
         this.vitamins = new ArrayList<String>();
@@ -35,6 +40,9 @@ public class Fruit {
         this.taste = Taste.NEUTRAL;
     }
 
+    /**
+     * constructor with all properties.
+     */
     public Fruit(String name, String scientificName, float weight, float averageWeight, ArrayList<String> colors, ArrayList<String> vitamins, Float pricePound, int calories, boolean edible, boolean poisonous, Maturity maturity, Taste taste) {
         this.name = name;
         this.scientificName = scientificName;
@@ -49,6 +57,7 @@ public class Fruit {
         this.maturity = maturity;
         this.taste = taste;
     }
+
 
     //    Getters and Setters
 
@@ -172,7 +181,7 @@ public class Fruit {
     }
 
     /**
-     * Evaluate the taste and return it
+     * Evaluate the taste and return it in String
      *
      * @return String of the taste
      */
@@ -193,7 +202,7 @@ public class Fruit {
     }
 
     /**
-     * Evaluate a condition that in case the entered boolean value is true return "yes", else returns "no"
+     * Evaluate a condition that in case the entered boolean value is true return "yes", else returns "no".
      *
      * @param value to evaluate
      * @return String "yes" or "no"
@@ -203,9 +212,9 @@ public class Fruit {
     }
 
     /**
-     * Loop through the arrayList of colors and concatenate the colors with line break
+     * Loop through the arrayList of colors and concatenate the colors with line break.
      *
-     * @return String with list of colors
+     * @return String with list of colors.
      */
     protected String listOfColors() {
         StringBuilder listOfColors = new StringBuilder(" - Colors - \n");
@@ -217,9 +226,9 @@ public class Fruit {
     }
 
     /**
-     * Loop through the arrayList of vitamins and concatenate it into a String
+     * Loop through the arrayList of vitamins and concatenate it into a String.
      *
-     * @return String with vitamins compiled
+     * @return String with vitamins compiled.
      */
     protected String listOfVitamins() {
         StringBuilder listOfVitamins = new StringBuilder("Vitamins: ");
@@ -231,9 +240,9 @@ public class Fruit {
     }
 
     /**
-     * Evaluate different properties of the fruit if it can be eaten
+     * Evaluate different properties of the fruit if it can be eaten.
      *
-     * @return an explanation of whether the fruit can be eaten
+     * @return an explanation of whether the fruit can be eaten.
      */
     public String canBeEaten() {
 
@@ -261,9 +270,9 @@ public class Fruit {
     }
 
     /**
-     * Text with detailed description information with each of the details of the fruit
+     * Text with detailed description information with each of the details of the fruit.
      *
-     * @return String with all the details
+     * @return String with all the details.
      */
     public String detailedDescription() {
 
@@ -284,10 +293,10 @@ public class Fruit {
     }
 
     /**
-     * Text with basic information about the fruit
-     * - name, average weight, calories and price per pound
+     * Text with basic information about the fruit.
+     * - Name, Average Weight, Calories and Price per pound
      *
-     * @return String
+     * @return String with these details.
      */
     public String description() {
         return "- Detailed description - \n" +
@@ -298,9 +307,9 @@ public class Fruit {
     }
 
     /**
-     * Know the price with the cost of the pound by the weight in grams of the fruit
+     * Know the price with the cost of the pound by the weight in grams of the fruit.
      *
-     * @return the price
+     * @return the price.
      */
     public double getPrice() {
         //large number
