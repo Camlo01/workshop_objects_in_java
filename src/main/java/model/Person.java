@@ -7,7 +7,7 @@ import java.time.ZoneId;
 import java.util.Date;
 
 /**
- * represents a person with useful methods
+ * Class that represents a person and includes useful methods.
  *
  * @author Camilo Beltrán
  */
@@ -29,14 +29,14 @@ public class Person {
 //    Constructors
 
     /**
-     * Empty constructor
+     * Empty constructor.
      */
     public Person() {
         this.status = MaritalStatus.SINGLE;
     }
 
     /**
-     * Minimum information to create the person object
+     * Minimum information to create the person object.
      */
     public Person(String name, Date dateBirth, float height, int phoneNumber, int postalCode, String address) {
         this.name = name;
@@ -48,7 +48,7 @@ public class Person {
     }
 
     /**
-     * Constructor to write the complete information of the person
+     * Constructor to write the complete information of the person.
      */
     public Person(String name, String lastName1, String lastName2, Date dateBirth, float height, String email, int phoneNumber, int postalCode, String address, MaritalStatus status) {
         this.name = name;
@@ -149,7 +149,7 @@ public class Person {
 //    Useful methods
 
     /**
-     * full name with name and last names
+     * full name with name and last names.
      *
      * @return String with name concatenated with lastName1 and lastName2
      */
@@ -158,7 +158,7 @@ public class Person {
     }
 
     /**
-     * Check the age according to the person's date of birth and if it is older than the entered age
+     * Check the age according to the person's date of birth and if it is older than the entered age.
      *
      * @param requiredAge minimum age to evaluate
      * @return true if is older than the requiredAge
@@ -175,7 +175,7 @@ public class Person {
     }
 
     /**
-     * Verify if the person is considered as adult by his birth Date
+     * Verify if the person is considered as adult by his birth Date.
      *
      * @return true in that case
      */
