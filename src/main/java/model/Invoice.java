@@ -3,10 +3,15 @@ package model;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.concurrent.atomic.AtomicReference;
 
+/**
+ * Class representing an invoice with useful methods.
+ *
+ * @author Camilo Beltrán
+ */
 public class Invoice {
 
     private int invoiceNumber;
@@ -20,10 +25,22 @@ public class Invoice {
 
 // constructor
 
+    /**
+     * Empty constructor.
+     */
     public Invoice() {
         this.date = LocalDate.now();
     }
 
+    /**
+     * Constructor with the necessary information completed.
+     * values like "subtotal", "costIva" and "total" are automatically generated.
+     *
+     * @param invoiceNumber Unique invoice number
+     * @param whoInvoice    cashier name
+     * @param whoPays       customer name
+     * @param fruits        ArrayList of products to buy
+     */
     public Invoice(int invoiceNumber, String whoInvoice, String whoPays, ArrayList<Fruit> fruits) {
         this.invoiceNumber = invoiceNumber;
         this.whoInvoice = whoInvoice;
@@ -74,37 +91,20 @@ public class Invoice {
         return fruits;
     }
 
-    public void setFruits(ArrayList<Fruit> fruits) {
-        this.fruits = fruits;
-    }
-
     public double getSubTotal() {
         return subTotal;
-    }
-
-    public void setSubTotal(double subTotal) {
-        this.subTotal = subTotal;
     }
 
     public double getCostIva() {
         return costIva;
     }
 
-    public void setCostIva(double costIva) {
-        this.costIva = costIva;
-    }
-
     public double getTotal() {
         return total;
     }
 
-    public void setTotal(double total) {
-        this.total = total;
-    }
-
 
 //    Util methods
-
 
     /**
      * Loop array of products and adds the price of all products to be returned
@@ -152,17 +152,37 @@ public class Invoice {
     }
 
     /**
+     * show on the receipt the date in the format as is desired
      *
-     * @return
+     * @return 31/12/2022 (example)
      */
     private String dateFormatForInvoice() {
-        return " " + date.getDayOfMonth() + "/" + date.getMonthValue() + "/" + date.getYear() + " ";
+        DateTimeFormatter formatToUse = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        return date.format(formatToUse);
 
     }
 
     /**
+     * The ArrayList of products is listed with its weight and its price to be added inside showInvoice()
      *
-     * @return
+     * @param fruits Array of products
+     * @return the list
+     */
+    private String productsDetailInvoice(ArrayList<Fruit> fruits) {
+        StringBuilder details = new StringBuilder("List...........................\n");
+        fruits.forEach((fruit -> {
+            String productInfo = fruit.getName() + " | " + fruit.getWeight() + "g | " + "$" + fruit.getPrice() + "\n";
+            details.append(productInfo);
+        }));
+
+
+        return details.toString();
+    }
+
+    /**
+     * Show the invoice with all the details
+     *
+     * @return the invoice
      */
     public String showInvoice() {
         return "-------------------------------\n" +
@@ -171,16 +191,16 @@ public class Invoice {
                 "date: " + dateFormatForInvoice() + "\n" +
                 "------------------------------- \n" +
                 "who attended: " + whoInvoice + "\n" +
-                "person who buy: " + whoPays + "\n" +
-                "\n" +
-                "List...........................\n" +
-                "\n" +
+                "person who buy: " + whoPays + "\n\n" +
                 //List of Fruits
+                productsDetailInvoice(fruits) +
                 "\n" +
+                "total product: " + countProducts(fruits) + "\n" +
                 "cost...........................\n" +
                 "subTotal: " + subTotal + "\n" +
                 "cost of IVA: " + costIva + "\n" +
                 "total: " + total + "\n" +
                 "\n";
     }
+
 }
