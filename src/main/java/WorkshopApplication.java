@@ -1,7 +1,4 @@
-import model.BankAccount;
-import model.Fruit;
-import model.Invoice;
-import model.Person;
+import model.*;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
