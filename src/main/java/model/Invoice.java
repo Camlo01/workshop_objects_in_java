@@ -120,7 +120,7 @@ public class Invoice {
             subTotal.updateAndGet(v -> (double) (v + fruit.getPrice()));
         }));
         //SubTotal is rounded to 2 decimals places
-        BigDecimal subTotalRounded = new BigDecimal(subTotal.get()).setScale(2, RoundingMode.HALF_DOWN);
+        BigDecimal subTotalRounded = BigDecimal.valueOf(subTotal.get()).setScale(2, RoundingMode.HALF_DOWN);
 
         //The double value inside the object is returned
         return subTotalRounded.doubleValue();
