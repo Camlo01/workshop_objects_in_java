@@ -4,6 +4,8 @@ import java.util.Date;
 
 /**
  * Class representing a Message with useful methods.
+ *
+ * @author Camilo Beltrán
  */
 public class Message {
 
