@@ -2,7 +2,7 @@
 
 Este es el repositorio del primer taller de la cantera nivel 2
 
-En este taller se venóan proponiendo 3 diagramas de clases que debían ser puestas en código e implementar 3 clases própias,
+En este taller se venían proponiendo 3 diagramas de clases que debían ser puestas en código e implementar 3 clases própias,
 y a todas las clases colocar propiedades o métodos que pudieran hacer falta
 
 Se hace tanto la implementación de métodos públicos, protegidos y privados
